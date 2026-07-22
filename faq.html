@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>FAQ — Clotheshorse</title>
+  <meta name="description" content="How to read Clotheshorse: the Drying Index, time windows, colors and forecasts explained." />
+  <meta name="theme-color" content="#101a2e" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Back to Clotheshorse">
+        <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="46" cy="16" r="9" fill="var(--sun)" />
+          <path d="M6 24 Q32 34 58 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+          <path d="M22 28.5 l-3 3 v13 a2 2 0 0 0 2 2 h10 a2 2 0 0 0 2-2 v-13 l-3-3 -2.5 2 -3-2z" fill="currentColor" />
+          <circle cx="24" cy="27.5" r="1.6" fill="var(--sun)" />
+          <circle cx="44" cy="30" r="1.6" fill="var(--sun)" />
+          <path d="M42 31 v11 a1.8 1.8 0 0 0 1.8 1.8 h7 a1.8 1.8 0 0 0 1.8-1.8 v-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">Clotheshorse</span>
+          <span class="brand-tag">laundry weather</span>
+        </span>
+      </a>
+      <a class="btn-ghost back-btn" href="./">← Back to the app</a>
+    </header>
+
+    <main class="faq">
+      <h1 class="faq-title">How to read <span>Clotheshorse</span></h1>
+      <p class="faq-intro">Everything the app shows you, explained one question at a time.</p>
+
+      <h2 class="faq-section">The basics</h2>
+
+      <details class="faq-item" open>
+        <summary>What does Clotheshorse do?</summary>
+        <p>Clotheshorse reads the weather forecast for your location and turns it into practical advice: <strong>the best time windows to hang your laundry outside</strong> so it dries as fast as possible. No more guessing whether that grey sky will ruin your towels.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is the Drying Index?</summary>
+        <p>It's Clotheshorse's own score from <strong>0 to 100</strong> that says how quickly laundry would dry outdoors at a given moment. The higher the number, the faster your clothes dry:</p>
+        <ul>
+          <li><strong class="c-great">65–100</strong> — great drying conditions</li>
+          <li><strong class="c-ok">45–64</strong> — fair: it'll dry, just slowly</li>
+          <li><strong class="c-bad">0–44</strong> — not recommended</li>
+        </ul>
+      </details>
+
+      <details class="faq-item">
+        <summary>How is the Drying Index calculated?</summary>
+        <p>Laundry dries by evaporation, so the index combines the four factors that drive it, weighted by how much each one matters:</p>
+        <ul>
+          <li><strong>Humidity — 35%.</strong> The biggest factor. Dry air soaks up moisture from fabric; humid air doesn't.</li>
+          <li><strong>Sunshine — 25%.</strong> Measured as solar radiation. Direct sun heats the fabric and speeds up evaporation dramatically.</li>
+          <li><strong>Wind — 20%.</strong> Moving air carries damp air away from your clothes. A breezy day beats a still one.</li>
+          <li><strong>Temperature — 20%.</strong> Warmer air can hold more moisture.</li>
+        </ul>
+        <p>Then two penalties are applied: the score drops as the <strong>chance of rain</strong> rises (and collapses to almost zero if rain is actually forecast), and <strong>night hours</strong> are heavily reduced — no sun, falling temperatures and dew mean laundry barely dries after dark.</p>
+      </details>
+
+      <h2 class="faq-section">Reading the screens</h2>
+
+      <details class="faq-item">
+        <summary>What is the big circular gauge?</summary>
+        <p>That's the Drying Index <strong>right now</strong> for your selected location. The ring fills and changes color with the score — green (great), yellow (fair), red (bad) — with a short verdict underneath telling you what to do with your laundry basket.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What is "Today's best window"?</summary>
+        <p>It's the <strong>continuous stretch of hours with the best drying conditions left today</strong> — for example "12:00 – 18:00 · index 87". Hang your laundry at the start of that window and it will have the best hours of the day working for it. The number after "index" is the average Drying Index across the window.</p>
+        <p>If no hour today reaches a good score, the label changes to <em>"Possible window (not ideal)"</em> — usable, but expect slow drying — or tells you plainly that today's a lost cause.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I read the hourly cards?</summary>
+        <p>Each card in "Today, hour by hour" shows one hour of the rest of the day:</p>
+        <ul>
+          <li><strong>Time</strong> — the card marked "Now" is the current hour, highlighted in amber.</li>
+          <li><strong>Weather icon</strong> — forecast conditions for that hour.</li>
+          <li><strong>Temperature</strong> — forecast air temperature.</li>
+          <li><strong>Colored badge</strong> — the Drying Index for that hour: green ≥ 65, yellow 45–64, red &lt; 45.</li>
+        </ul>
+        <p>Scroll sideways to see the whole day.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How do I read the "Next days" forecast?</summary>
+        <p>Each row is one of the next six days, with the forecast icon and the minimum / maximum temperature. The colored chip on the right is the key part: it's <strong>the single best drying window of that day</strong>, picked the same way as today's. A green chip means a genuinely good window; a yellow chip means the best that day is only fair; "Not recommended" means don't bother — keep the laundry indoors.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>What do humidity and wind in the header mean?</summary>
+        <p>They're the current conditions used by the index: <strong>relative humidity</strong> (lower is better for drying — below ~50% is great) and <strong>wind speed</strong> in km/h (a light breeze of 10–20 km/h helps a lot).</p>
+      </details>
+
+      <h2 class="faq-section">Why the index behaves the way it does</h2>
+
+      <details class="faq-item">
+        <summary>Why do evening and night hours score so low?</summary>
+        <p>After sunset there's no solar radiation, the temperature falls and relative humidity climbs — and dew can even make clothes <em>wetter</em>. Laundry left out overnight mostly just sits there damp, which is also how it picks up that musty smell. That's why night hours are scored at roughly a third of equivalent daytime conditions.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Why does a small chance of rain lower the score so much?</summary>
+        <p>Because the cost of being wrong is high: one shower undoes hours of drying and forces a rewash if it's muddy rain. The index scales down smoothly as rain probability rises and drops to near zero once rain is likely (≥ 60% probability or actual precipitation forecast). Better safe than soggy.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can laundry dry in cold weather?</summary>
+        <p>Yes — slowly. Cold, <em>dry</em>, windy days still work: humidity and wind matter more than temperature, which is why they weigh more in the index. A crisp winter day with low humidity and a breeze can outperform a muggy summer evening.</p>
+      </details>
+
+      <h2 class="faq-section">Data &amp; privacy</h2>
+
+      <details class="faq-item">
+        <summary>Where does the weather data come from?</summary>
+        <p>From <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>, a free, open weather API that combines national weather-service models. Forecasts refresh every time you open the app or pick a location. Like any forecast, accuracy decreases the further ahead you look — treat day 5–6 windows as a rough guide.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>How is my location used?</summary>
+        <p>Your position is used only to request a forecast: coordinates go to Open-Meteo (weather) and BigDataCloud (to display your city's name). Nothing else is sent anywhere. The last place you looked at is saved in your browser only, so the app can reopen where you left off.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Does the app work offline?</summary>
+        <p>The app itself loads offline once you've visited it, and it will show the <strong>last forecast it fetched</strong> for your location. It can't get fresh data without a connection, so treat offline numbers as a snapshot of the last update.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Can I install Clotheshorse like a real app?</summary>
+        <p>Yes — it's a PWA. On <strong>Android/Chrome</strong>: menu → "Add to Home screen" (or "Install app"). On <strong>iPhone/iPad</strong>: Share → "Add to Home Screen". On <strong>desktop</strong> Chrome/Edge: click the install icon in the address bar. It opens full-screen, with its own icon, like a native app.</p>
+      </details>
+
+      <p class="faq-outro">Still puzzled? The short version: <strong>green badge = hang it out, red badge = don't.</strong></p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-row">
+            <svg class="footer-logo" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="46" cy="16" r="9" fill="var(--sun)" />
+              <path d="M6 24 Q32 34 58 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              <path d="M22 28.5 l-3 3 v13 a2 2 0 0 0 2 2 h10 a2 2 0 0 0 2-2 v-13 l-3-3 -2.5 2 -3-2z" fill="currentColor" />
+              <path d="M42 31 v11 a1.8 1.8 0 0 0 1.8 1.8 h7 a1.8 1.8 0 0 0 1.8-1.8 v-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+            </svg>
+            <span class="footer-name">Clotheshorse</span>
+          </div>
+          <p>The weather forecast, translated into one simple answer: when to hang your laundry so it dries fastest.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="App">
+          <h4>App</h4>
+          <a href="./">Forecast</a>
+          <a href="faq.html">FAQ — how to read</a>
+        </nav>
+
+        <div class="footer-col">
+          <h4>Data &amp; credits</h4>
+          <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo <span>weather data</span></a>
+          <a href="https://www.bigdatacloud.com/" target="_blank" rel="noopener">BigDataCloud <span>reverse geocoding</span></a>
+          <a href="https://github.com/basmilius/weather-icons" target="_blank" rel="noopener">Meteocons <span>weather icons</span></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Clotheshorse</span>
+        <span class="footer-joke">No liability for soggy socks.</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>

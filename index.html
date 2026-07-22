@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Clotheshorse — Laundry weather</title>
+  <meta name="description" content="Clotheshorse tells you the best time windows to hang your laundry outside, based on the weather." />
+  <meta name="theme-color" content="#101a2e" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app" id="app">
+
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Clotheshorse home">
+        <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="46" cy="16" r="9" fill="var(--sun)" />
+          <path d="M6 24 Q32 34 58 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+          <path d="M22 28.5 l-3 3 v13 a2 2 0 0 0 2 2 h10 a2 2 0 0 0 2-2 v-13 l-3-3 -2.5 2 -3-2z" fill="currentColor" />
+          <circle cx="24" cy="27.5" r="1.6" fill="var(--sun)" />
+          <circle cx="44" cy="30" r="1.6" fill="var(--sun)" />
+          <path d="M42 31 v11 a1.8 1.8 0 0 0 1.8 1.8 h7 a1.8 1.8 0 0 0 1.8-1.8 v-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">Clotheshorse</span>
+          <span class="brand-tag">laundry weather</span>
+        </span>
+      </a>
+
+      <div class="search-wrap">
+        <form id="search-form" class="search" role="search" autocomplete="off">
+          <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true"><path d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <input id="search-input" type="text" placeholder="Search city…" aria-label="Search city" />
+          <button type="button" id="gps-btn" class="gps-btn" title="Use my location" aria-label="Use my location">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v3m0 14v3M2 12h3m14 0h3M12 8a4 4 0 100 8 4 4 0 000-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          </button>
+        </form>
+        <ul id="search-results" class="search-results" hidden></ul>
+      </div>
+
+    </header>
+
+    <main id="main">
+
+      <!-- Empty / welcome state -->
+      <section id="welcome" class="welcome">
+        <div class="welcome-art" aria-hidden="true">
+          <svg viewBox="0 0 320 160">
+            <circle cx="262" cy="38" r="26" fill="var(--sun)" opacity="0.95"/>
+            <path d="M10 60 Q160 92 310 60" fill="none" stroke="var(--line)" stroke-width="4" stroke-linecap="round"/>
+            <g fill="var(--cloth-1)">
+              <path d="M70 73 l-9 9 v34 a5 5 0 0 0 5 5 h28 a5 5 0 0 0 5-5 v-34 l-9-9 -7 6z"/>
+            </g>
+            <g fill="var(--cloth-2)">
+              <path d="M150 80 v40 a4 4 0 0 0 4 4 h26 a4 4 0 0 0 4-4 v-40z"/>
+            </g>
+            <g fill="var(--cloth-3)">
+              <path d="M228 76 l-8 8 v26 a5 5 0 0 0 5 5 h24 a5 5 0 0 0 5-5 v-26 l-8-8 -6 5z"/>
+            </g>
+            <g fill="var(--peg)">
+              <rect x="72" y="66" width="5" height="12" rx="2"/>
+              <rect x="160" y="72" width="5" height="12" rx="2"/>
+              <rect x="230" y="69" width="5" height="12" rx="2"/>
+            </g>
+          </svg>
+        </div>
+        <h1>Clothes on the line,<br /><span>not on your mind.</span></h1>
+        <p>Search your city or use GPS — Clotheshorse reads the forecast and tells you when to hang your laundry so it dries fastest.</p>
+        <button id="welcome-gps" class="btn-primary">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v3m0 14v3M2 12h3m14 0h3M12 8a4 4 0 100 8 4 4 0 000-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          Use my location
+        </button>
+      </section>
+
+      <!-- Loading state -->
+      <section id="loading" class="loading" hidden>
+        <div class="spinner" aria-hidden="true"></div>
+        <p>Checking the sky for you…</p>
+      </section>
+
+      <!-- Error state -->
+      <section id="error" class="error-box" hidden>
+        <p id="error-msg"></p>
+        <button id="retry-btn" class="btn-ghost">Try again</button>
+      </section>
+
+      <!-- Dashboard -->
+      <section id="dashboard" hidden>
+
+        <div class="hero card">
+          <div class="hero-left">
+            <h2 id="place-name" class="place">—</h2>
+            <p class="date"><span id="today-date">—</span> · <span id="today-time" class="time-now">—</span></p>
+            <div class="now">
+              <img id="now-icon" class="now-icon" src="icons/weather/clear-day.svg" alt="" />
+              <span id="now-temp" class="now-temp">—°</span>
+            </div>
+            <p id="now-desc" class="now-desc">—</p>
+            <ul class="now-meta">
+              <li><span>Humidity</span><strong id="now-hum">—</strong></li>
+              <li><span>Wind</span><strong id="now-wind">—</strong></li>
+            </ul>
+          </div>
+          <div class="hero-right">
+            <div class="gauge" id="gauge" role="img" aria-label="Current Drying Index">
+              <svg viewBox="0 0 120 120">
+                <circle class="gauge-track" cx="60" cy="60" r="52" />
+                <circle class="gauge-fill" id="gauge-fill" cx="60" cy="60" r="52" />
+              </svg>
+              <div class="gauge-center">
+                <strong id="gauge-value">—</strong>
+                <span>Drying<br/>Index</span>
+              </div>
+            </div>
+            <p id="gauge-verdict" class="gauge-verdict">—</p>
+          </div>
+        </div>
+
+        <div class="best-banner card" id="best-banner" hidden>
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="best-icon"><path d="M12 3v2m6.4.6-1.4 1.4M21 12h-2M5 12H3m3-5-1.4-1.4M12 8a4 4 0 110 8 4 4 0 010-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 20h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <div>
+            <span class="best-label" id="best-label">Today's best window</span>
+            <strong class="best-time" id="best-time">—</strong>
+          </div>
+        </div>
+
+        <h3 class="section-title">Today, hour by hour</h3>
+        <div class="hours-scroll" id="hours-scroll" tabindex="0" aria-label="Today's hourly forecast"></div>
+
+        <div class="legend">
+          <span><i class="dot dot-great"></i> Great for drying</span>
+          <span><i class="dot dot-ok"></i> Fair</span>
+          <span><i class="dot dot-bad"></i> Not recommended</span>
+        </div>
+
+        <h3 class="section-title">Next days</h3>
+        <div class="week card" id="week"></div>
+
+      </section>
+
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-row">
+            <svg class="footer-logo" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="46" cy="16" r="9" fill="var(--sun)" />
+              <path d="M6 24 Q32 34 58 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              <path d="M22 28.5 l-3 3 v13 a2 2 0 0 0 2 2 h10 a2 2 0 0 0 2-2 v-13 l-3-3 -2.5 2 -3-2z" fill="currentColor" />
+              <path d="M42 31 v11 a1.8 1.8 0 0 0 1.8 1.8 h7 a1.8 1.8 0 0 0 1.8-1.8 v-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+            </svg>
+            <span class="footer-name">Clotheshorse</span>
+          </div>
+          <p>The weather forecast, translated into one simple answer: when to hang your laundry so it dries fastest.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="App">
+          <h4>App</h4>
+          <a href="./">Forecast</a>
+          <a href="faq.html">FAQ — how to read</a>
+        </nav>
+
+        <div class="footer-col">
+          <h4>Data &amp; credits</h4>
+          <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo <span>weather data</span></a>
+          <a href="https://www.bigdatacloud.com/" target="_blank" rel="noopener">BigDataCloud <span>reverse geocoding</span></a>
+          <a href="https://github.com/basmilius/weather-icons" target="_blank" rel="noopener">Meteocons <span>weather icons</span></a>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Clotheshorse</span>
+        <span class="footer-joke">No liability for soggy socks.</span>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
