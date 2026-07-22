@@ -454,8 +454,9 @@ body::before {
 }
 
 .footer-grid {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   gap: 2rem;
 }
 
@@ -478,7 +479,13 @@ body::before {
   max-width: 30ch;
 }
 
-.footer-col { display: flex; flex-direction: column; gap: 0.55rem; }
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  align-items: flex-end;
+  text-align: right;
+}
 .footer-col h4 {
   font-size: 0.72rem;
   font-weight: 700;
@@ -527,7 +534,8 @@ body::before {
 .faq-outro strong { color: var(--text); }
 
 @media (max-width: 640px) {
-  .footer-grid { grid-template-columns: 1fr; gap: 1.6rem; }
+  .footer-grid { flex-direction: column; gap: 1.6rem; }
+  .footer-col { align-items: flex-start; text-align: left; }
   .footer-bottom { justify-content: center; text-align: center; }
 }
 
