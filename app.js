@@ -36,42 +36,43 @@ const els = {
 const STORAGE_KEY = "clotheshorse:lastPlace";
 let lastPlace = null;
 
-/* ---------- Weather codes (WMO) → Meteocons icon + description ----------
-   day / night icon variants, both from icons/weather/ (local, offline-safe) */
+/* ---------- Weather codes (WMO) → Meteocons icon ----------
+   day / night icon variants, both from icons/weather/ (local, offline-safe);
+   descriptions live in the i18n dictionary (tWmo) */
 const WMO = {
-  0: { d: "clear-day", n: "clear-night", desc: "Clear sky" },
-  1: { d: "partly-cloudy-day", n: "partly-cloudy-night", desc: "Mostly clear" },
-  2: { d: "partly-cloudy-day", n: "partly-cloudy-night", desc: "Partly cloudy" },
-  3: { d: "overcast", n: "overcast", desc: "Overcast" },
-  45: { d: "fog", n: "fog", desc: "Fog" },
-  48: { d: "fog", n: "fog", desc: "Freezing fog" },
-  51: { d: "drizzle", n: "drizzle", desc: "Light drizzle" },
-  53: { d: "drizzle", n: "drizzle", desc: "Drizzle" },
-  55: { d: "drizzle", n: "drizzle", desc: "Heavy drizzle" },
-  56: { d: "sleet", n: "sleet", desc: "Freezing drizzle" },
-  57: { d: "sleet", n: "sleet", desc: "Freezing drizzle" },
-  61: { d: "rain", n: "rain", desc: "Light rain" },
-  63: { d: "rain", n: "rain", desc: "Rain" },
-  65: { d: "rain", n: "rain", desc: "Heavy rain" },
-  66: { d: "sleet", n: "sleet", desc: "Freezing rain" },
-  67: { d: "sleet", n: "sleet", desc: "Freezing rain" },
-  71: { d: "snow", n: "snow", desc: "Light snow" },
-  73: { d: "snow", n: "snow", desc: "Snow" },
-  75: { d: "snow", n: "snow", desc: "Heavy snow" },
-  77: { d: "snow", n: "snow", desc: "Snow grains" },
-  80: { d: "partly-cloudy-day-rain", n: "partly-cloudy-night-rain", desc: "Light showers" },
-  81: { d: "partly-cloudy-day-rain", n: "partly-cloudy-night-rain", desc: "Showers" },
-  82: { d: "thunderstorms-rain", n: "thunderstorms-rain", desc: "Violent showers" },
-  85: { d: "partly-cloudy-day-snow", n: "partly-cloudy-day-snow", desc: "Snow showers" },
-  86: { d: "partly-cloudy-day-snow", n: "partly-cloudy-day-snow", desc: "Snow showers" },
-  95: { d: "thunderstorms", n: "thunderstorms", desc: "Thunderstorm" },
-  96: { d: "thunderstorms-rain", n: "thunderstorms-rain", desc: "Thunderstorm with hail" },
-  99: { d: "thunderstorms-rain", n: "thunderstorms-rain", desc: "Thunderstorm with hail" },
+  0: { d: "clear-day", n: "clear-night" },
+  1: { d: "partly-cloudy-day", n: "partly-cloudy-night" },
+  2: { d: "partly-cloudy-day", n: "partly-cloudy-night" },
+  3: { d: "overcast", n: "overcast" },
+  45: { d: "fog", n: "fog" },
+  48: { d: "fog", n: "fog" },
+  51: { d: "drizzle", n: "drizzle" },
+  53: { d: "drizzle", n: "drizzle" },
+  55: { d: "drizzle", n: "drizzle" },
+  56: { d: "sleet", n: "sleet" },
+  57: { d: "sleet", n: "sleet" },
+  61: { d: "rain", n: "rain" },
+  63: { d: "rain", n: "rain" },
+  65: { d: "rain", n: "rain" },
+  66: { d: "sleet", n: "sleet" },
+  67: { d: "sleet", n: "sleet" },
+  71: { d: "snow", n: "snow" },
+  73: { d: "snow", n: "snow" },
+  75: { d: "snow", n: "snow" },
+  77: { d: "snow", n: "snow" },
+  80: { d: "partly-cloudy-day-rain", n: "partly-cloudy-night-rain" },
+  81: { d: "partly-cloudy-day-rain", n: "partly-cloudy-night-rain" },
+  82: { d: "thunderstorms-rain", n: "thunderstorms-rain" },
+  85: { d: "partly-cloudy-day-snow", n: "partly-cloudy-day-snow" },
+  86: { d: "partly-cloudy-day-snow", n: "partly-cloudy-day-snow" },
+  95: { d: "thunderstorms", n: "thunderstorms" },
+  96: { d: "thunderstorms-rain", n: "thunderstorms-rain" },
+  99: { d: "thunderstorms-rain", n: "thunderstorms-rain" },
 };
 
 function wmo(code, isDay = true) {
-  const w = WMO[code] || { d: "thermometer", n: "thermometer", desc: "—" };
-  return { icon: `icons/weather/${isDay ? w.d : w.n}.svg`, desc: w.desc };
+  const w = WMO[code] || { d: "thermometer", n: "thermometer" };
+  return { icon: `icons/weather/${isDay ? w.d : w.n}.svg`, desc: tWmo(code) };
 }
 
 /* ---------- Drying Index (0–100) ----------
@@ -97,11 +98,11 @@ const clamp01 = (v) => Math.max(0, Math.min(1, v));
 
 const scoreClass = (s) => (s >= 65 ? "great" : s >= 45 ? "ok" : "bad");
 const scoreVerdict = (s) =>
-  s >= 80 ? "Perfect — hang it all out!" :
-  s >= 65 ? "Great time to hang laundry" :
-  s >= 45 ? "It'll dry, just slowly" :
-  s >= 20 ? "Better to wait" :
-  "Keep it on the indoor rack";
+  s >= 80 ? t("verdict80") :
+  s >= 65 ? t("verdict65") :
+  s >= 45 ? t("verdict45") :
+  s >= 20 ? t("verdict20") :
+  t("verdict0");
 
 /* ---------- Time bands ----------
    Find contiguous runs of hours with score >= threshold,
@@ -149,15 +150,15 @@ async function fetchForecast(lat, lon) {
     timezone: "auto",
   });
   const res = await fetch(url);
-  if (!res.ok) throw new Error("Weather service unavailable (" + res.status + ")");
+  if (!res.ok) throw new Error(t("errSvc") + " (" + res.status + ")");
   return res.json();
 }
 
 async function searchCity(name) {
   const url = new URL("https://geocoding-api.open-meteo.com/v1/search");
-  url.search = new URLSearchParams({ name, count: "6", language: "en", format: "json" });
+  url.search = new URLSearchParams({ name, count: "6", language: LOCALE, format: "json" });
   const res = await fetch(url);
-  if (!res.ok) throw new Error("City search unavailable");
+  if (!res.ok) throw new Error(t("errSearch"));
   const data = await res.json();
   return data.results || [];
 }
@@ -165,12 +166,12 @@ async function searchCity(name) {
 async function reverseGeocode(lat, lon) {
   try {
     const res = await fetch(
-      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=en`
+      `https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${lat}&longitude=${lon}&localityLanguage=${LOCALE}`
     );
     const data = await res.json();
-    return data.city || data.locality || "Your location";
+    return data.city || data.locality || t("yourLocation");
   } catch {
-    return "Your location";
+    return t("yourLocation");
   }
 }
 
@@ -195,7 +196,7 @@ async function loadPlace(place) {
     render(place, data);
     show(els.dashboard);
   } catch (err) {
-    showError(err.message || "Something went wrong.");
+    showError(err.message || t("errGeneric"));
   }
 }
 
@@ -237,10 +238,10 @@ function startClock(tz) {
   clearInterval(clockTimer);
   const tick = () => {
     const now = new Date();
-    els.todayDate.textContent = now.toLocaleDateString("en-GB", {
+    els.todayDate.textContent = now.toLocaleDateString(DATE_LOCALE, {
       weekday: "long", day: "numeric", month: "long", timeZone: tz,
     });
-    els.todayTime.textContent = now.toLocaleTimeString("en-GB", {
+    els.todayTime.textContent = now.toLocaleTimeString(DATE_LOCALE, {
       hour: "2-digit", minute: "2-digit", hourCycle: "h23", timeZone: tz,
     });
   };
@@ -286,7 +287,7 @@ function render(place, data) {
       const hw = wmo(h.code, h.isDay);
       const isNow = h.date === cityNow.dateKey && h.hour === cityNow.hour;
       return `<div class="hour-card${isNow ? " is-now" : ""}" style="animation-delay:${Math.min(i * 30, 400)}ms">
-        <span class="h-time">${isNow ? "Now" : String(h.hour).padStart(2, "0") + ":00"}</span>
+        <span class="h-time">${isNow ? t("now") : String(h.hour).padStart(2, "0") + ":00"}</span>
         <img class="h-icon" src="${hw.icon}" alt="${hw.desc}" />
         <span class="h-temp">${Math.round(h.temp)}°</span>
         <span class="h-score ${scoreClass(h.score)}">${h.score}</span>
@@ -298,11 +299,11 @@ function render(place, data) {
   const bestToday = bestBandForDay(todayHours.length ? todayHours : hours.filter((h) => h.date === todayKey));
   els.bestBanner.hidden = false;
   if (bestToday) {
-    els.bestLabel.textContent = bestToday.quality === "great" ? "Today's best window" : "Possible window (not ideal)";
-    els.bestTime.textContent = fmtBand(bestToday) + " · index " + Math.round(bestToday.avg);
+    els.bestLabel.textContent = bestToday.quality === "great" ? t("bestWindow") : t("possibleWindow");
+    els.bestTime.textContent = fmtBand(bestToday) + " · " + t("index") + " " + Math.round(bestToday.avg);
   } else {
-    els.bestLabel.textContent = "Today";
-    els.bestTime.textContent = "No luck today — laundry postponed";
+    els.bestLabel.textContent = t("today");
+    els.bestTime.textContent = t("noLuck");
   }
 
   /* Week */
@@ -316,9 +317,9 @@ function render(place, data) {
       const band = bestBandForDay(dayHours);
       const chip = band
         ? `<span class="band-chip ${band.quality}">${fmtBand(band)}</span>`
-        : `<span class="band-chip bad">Not recommended</span>`;
-      const dayName = i === 1 ? "Tomorrow" : d.toLocaleDateString("en-GB", { weekday: "long" });
-      const daySub = d.toLocaleDateString("en-GB", { day: "numeric", month: "short" });
+        : `<span class="band-chip bad">${t("notRecommended")}</span>`;
+      const dayName = i === 1 ? t("tomorrow") : d.toLocaleDateString(DATE_LOCALE, { weekday: "long" });
+      const daySub = d.toLocaleDateString(DATE_LOCALE, { day: "numeric", month: "short" });
       return `<div class="day-row">
         <span class="day-name">${dayName}<small>${daySub}</small></span>
         <img class="day-icon" src="${dw.icon}" alt="${dw.desc}" />
@@ -341,7 +342,7 @@ function renderGauge(score) {
 /* ---------- Geolocation ---------- */
 function useGPS() {
   if (!navigator.geolocation) {
-    showError("Your browser doesn't support geolocation. Search for your city instead.");
+    showError(t("errGeoUnsupported"));
     return;
   }
   show(els.loading);
@@ -352,7 +353,7 @@ function useGPS() {
       loadPlace({ name, lat, lon });
     },
     () => {
-      showError("Couldn't get your location. Check permissions or search for your city.");
+      showError(t("errGeoFailed"));
     },
     { timeout: 10000, maximumAge: 300000 }
   );

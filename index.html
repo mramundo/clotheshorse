@@ -31,21 +31,20 @@
         </svg>
         <span class="brand-text">
           <span class="brand-name">Clotheshorse</span>
-          <span class="brand-tag">laundry weather</span>
+          <span class="brand-tag" data-i18n="brandTag">laundry weather</span>
         </span>
       </a>
 
       <div class="search-wrap">
         <form id="search-form" class="search" role="search" autocomplete="off">
           <svg viewBox="0 0 24 24" class="search-icon" aria-hidden="true"><path d="M21 21l-4.35-4.35M17 10.5a6.5 6.5 0 11-13 0 6.5 6.5 0 0113 0z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          <input id="search-input" type="text" placeholder="Search city…" aria-label="Search city" />
-          <button type="button" id="gps-btn" class="gps-btn" title="Use my location" aria-label="Use my location">
+          <input id="search-input" type="text" placeholder="Search city…" aria-label="Search city" data-i18n-placeholder="searchPlaceholder" data-i18n-aria-label="searchAria" />
+          <button type="button" id="gps-btn" class="gps-btn" title="Use my location" aria-label="Use my location" data-i18n-title="gpsTitle" data-i18n-aria-label="gpsTitle">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v3m0 14v3M2 12h3m14 0h3M12 8a4 4 0 100 8 4 4 0 000-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           </button>
         </form>
         <ul id="search-results" class="search-results" hidden></ul>
       </div>
-
     </header>
 
     <main id="main">
@@ -72,24 +71,24 @@
             </g>
           </svg>
         </div>
-        <h1>Clothes on the line,<br /><span>not on your mind.</span></h1>
-        <p>Search your city or use GPS — Clotheshorse reads the forecast and tells you when to hang your laundry so it dries fastest.</p>
+        <h1 data-i18n-html="welcomeTitle">Clothes on the line,<br /><span>not on your mind.</span></h1>
+        <p data-i18n="welcomeText">Search your city or use GPS — Clotheshorse reads the forecast and tells you when to hang your laundry so it dries fastest.</p>
         <button id="welcome-gps" class="btn-primary">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v3m0 14v3M2 12h3m14 0h3M12 8a4 4 0 100 8 4 4 0 000-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-          Use my location
+          <span data-i18n="welcomeGps">Use my location</span>
         </button>
       </section>
 
       <!-- Loading state -->
       <section id="loading" class="loading" hidden>
         <div class="spinner" aria-hidden="true"></div>
-        <p>Checking the sky for you…</p>
+        <p data-i18n="loading">Checking the sky for you…</p>
       </section>
 
       <!-- Error state -->
       <section id="error" class="error-box" hidden>
         <p id="error-msg"></p>
-        <button id="retry-btn" class="btn-ghost">Try again</button>
+        <button id="retry-btn" class="btn-ghost" data-i18n="tryAgain">Try again</button>
       </section>
 
       <!-- Dashboard -->
@@ -105,19 +104,19 @@
             </div>
             <p id="now-desc" class="now-desc">—</p>
             <ul class="now-meta">
-              <li><span>Humidity</span><strong id="now-hum">—</strong></li>
-              <li><span>Wind</span><strong id="now-wind">—</strong></li>
+              <li><span data-i18n="humidity">Humidity</span><strong id="now-hum">—</strong></li>
+              <li><span data-i18n="wind">Wind</span><strong id="now-wind">—</strong></li>
             </ul>
           </div>
           <div class="hero-right">
-            <div class="gauge" id="gauge" role="img" aria-label="Current Drying Index">
+            <div class="gauge" id="gauge" role="img" aria-label="Current Drying Index" data-i18n-aria-label="gaugeAria">
               <svg viewBox="0 0 120 120">
                 <circle class="gauge-track" cx="60" cy="60" r="52" />
                 <circle class="gauge-fill" id="gauge-fill" cx="60" cy="60" r="52" />
               </svg>
               <div class="gauge-center">
                 <strong id="gauge-value">—</strong>
-                <span>Drying<br/>Index</span>
+                <span data-i18n-html="gaugeLabel">Drying<br/>Index</span>
               </div>
             </div>
             <p id="gauge-verdict" class="gauge-verdict">—</p>
@@ -127,21 +126,21 @@
         <div class="best-banner card" id="best-banner" hidden>
           <svg viewBox="0 0 24 24" aria-hidden="true" class="best-icon"><path d="M12 3v2m6.4.6-1.4 1.4M21 12h-2M5 12H3m3-5-1.4-1.4M12 8a4 4 0 110 8 4 4 0 010-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 20h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
           <div>
-            <span class="best-label" id="best-label">Today's best window</span>
+            <span class="best-label" id="best-label" data-i18n="bestWindow">Today's best window</span>
             <strong class="best-time" id="best-time">—</strong>
           </div>
         </div>
 
-        <h3 class="section-title">Today, hour by hour</h3>
-        <div class="hours-scroll" id="hours-scroll" tabindex="0" aria-label="Today's hourly forecast"></div>
+        <h3 class="section-title" data-i18n="hourByHour">Today, hour by hour</h3>
+        <div class="hours-scroll" id="hours-scroll" tabindex="0" aria-label="Today's hourly forecast" data-i18n-aria-label="hourlyAria"></div>
 
         <div class="legend">
-          <span><i class="dot dot-great"></i> Great for drying</span>
-          <span><i class="dot dot-ok"></i> Fair</span>
-          <span><i class="dot dot-bad"></i> Not recommended</span>
+          <span><i class="dot dot-great"></i> <span data-i18n="legendGreat">Great for drying</span></span>
+          <span><i class="dot dot-ok"></i> <span data-i18n="legendOk">Fair</span></span>
+          <span><i class="dot dot-bad"></i> <span data-i18n="legendBad">Not recommended</span></span>
         </div>
 
-        <h3 class="section-title">Next days</h3>
+        <h3 class="section-title" data-i18n="nextDays">Next days</h3>
         <div class="week card" id="week"></div>
 
       </section>
@@ -160,23 +159,24 @@
             </svg>
             <span class="footer-name">Clotheshorse</span>
           </div>
-          <p>The weather forecast, translated into one simple answer: when to hang your laundry so it dries fastest.</p>
+          <p data-i18n="footerBlurb">The weather forecast, translated into one simple answer: when to hang your laundry so it dries fastest.</p>
         </div>
 
         <nav class="footer-col" aria-label="Sitemap">
-          <h4>Sitemap</h4>
-          <a href="./">Forecast</a>
-          <a href="faq.html">FAQ — how to read</a>
+          <h4 data-i18n="sitemap">Sitemap</h4>
+          <a href="./" data-i18n="footForecast">Forecast</a>
+          <a href="faq.html" data-faq-link data-i18n="footFaq">FAQ — how to read</a>
         </nav>
       </div>
 
       <div class="footer-bottom">
-        <span>© 2026 Clotheshorse · Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></span>
-        <span class="footer-joke">No liability for soggy socks.</span>
+        <span data-i18n-html="footCopy">© 2026 Clotheshorse · Weather data by <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></span>
+        <span class="footer-joke" data-i18n="footJoke">No liability for soggy socks.</span>
       </div>
     </footer>
   </div>
 
+  <script src="i18n.js"></script>
   <script src="app.js"></script>
 </body>
 </html>

@@ -1,5 +1,5 @@
 /* Clotheshorse service worker — app shell cache-first, API network-first with cache fallback */
-const SHELL_CACHE = "clotheshorse-shell-v6";
+const SHELL_CACHE = "clotheshorse-shell-v7";
 const API_CACHE = "clotheshorse-api-v1";
 
 const WEATHER_ICONS = [
@@ -13,7 +13,9 @@ const SHELL_ASSETS = [
   "./",
   "./index.html",
   "./faq.html",
+  "./faq.it.html",
   "./styles.css",
+  "./i18n.js",
   "./app.js",
   "./manifest.webmanifest",
   "./icons/icon.svg",
@@ -23,7 +25,11 @@ const SHELL_ASSETS = [
 
 self.addEventListener("install", (e) => {
   e.waitUntil(
-    caches.open(SHELL_CACHE).then((c) => c.addAll(SHELL_ASSETS)).then(() => self.skipWaiting())
+    caches
+      .open(SHELL_CACHE)
+      // bypass the HTTP cache so a new SW version never freezes stale assets
+      .then((c) => c.addAll(SHELL_ASSETS.map((u) => new Request(u, { cache: "reload" }))))
+      .then(() => self.skipWaiting())
   );
 });
 

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>FAQ — Clotheshorse</title>
+  <meta name="description" content="Come leggere Clotheshorse: indice di asciugatura, fasce orarie, colori e previsioni spiegati." />
+  <meta name="theme-color" content="#101a2e" />
+  <link rel="manifest" href="manifest.webmanifest" />
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Torna a Clotheshorse">
+        <svg class="brand-logo" viewBox="0 0 64 64" aria-hidden="true">
+          <circle cx="46" cy="16" r="9" fill="var(--sun)" />
+          <path d="M6 24 Q32 34 58 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+          <path d="M22 28.5 l-3 3 v13 a2 2 0 0 0 2 2 h10 a2 2 0 0 0 2-2 v-13 l-3-3 -2.5 2 -3-2z" fill="currentColor" />
+          <circle cx="24" cy="27.5" r="1.6" fill="var(--sun)" />
+          <circle cx="44" cy="30" r="1.6" fill="var(--sun)" />
+          <path d="M42 31 v11 a1.8 1.8 0 0 0 1.8 1.8 h7 a1.8 1.8 0 0 0 1.8-1.8 v-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+        </svg>
+        <span class="brand-text">
+          <span class="brand-name">Clotheshorse</span>
+          <span class="brand-tag">il meteo del bucato</span>
+        </span>
+      </a>
+      <a class="btn-ghost back-btn" href="./">← Torna all'app</a>
+    </header>
+
+    <main class="faq">
+      <h1 class="faq-title">Come leggere <span>Clotheshorse</span></h1>
+      <p class="faq-intro">Tutto quello che l'app ti mostra, spiegato una domanda alla volta.</p>
+
+      <h2 class="faq-section">Le basi</h2>
+
+      <details class="faq-item" open>
+        <summary>Cosa fa Clotheshorse?</summary>
+        <p>Clotheshorse legge le previsioni meteo per la tua posizione e le trasforma in un consiglio pratico: <strong>le fasce orarie migliori per stendere i panni all'aperto</strong> così che si asciughino il più in fretta possibile. Basta indovinare se quel cielo grigio ti rovinerà gli asciugamani.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Cos'è l'indice di asciugatura?</summary>
+        <p>È il punteggio di Clotheshorse da <strong>0 a 100</strong> che dice quanto in fretta il bucato si asciugherebbe all'aperto in un dato momento. Più alto è il numero, più veloce l'asciugatura:</p>
+        <ul>
+          <li><strong class="c-great">65–100</strong> — condizioni ottime</li>
+          <li><strong class="c-ok">45–64</strong> — discrete: si asciuga, ma lentamente</li>
+          <li><strong class="c-bad">0–44</strong> — sconsigliato</li>
+        </ul>
+      </details>
+
+      <details class="faq-item">
+        <summary>Come viene calcolato l'indice?</summary>
+        <p>Il bucato si asciuga per evaporazione, quindi l'indice combina i quattro fattori che la determinano, pesati per quanto contano davvero:</p>
+        <ul>
+          <li><strong>Umidità — 35%.</strong> Il fattore più importante. L'aria secca assorbe l'umidità dai tessuti; quella umida no.</li>
+          <li><strong>Sole — 25%.</strong> Misurato come radiazione solare. Il sole diretto scalda il tessuto e accelera drasticamente l'evaporazione.</li>
+          <li><strong>Vento — 20%.</strong> L'aria in movimento porta via l'aria umida dai panni. Una giornata ventilata batte una immobile.</li>
+          <li><strong>Temperatura — 20%.</strong> L'aria calda può trattenere più umidità.</li>
+        </ul>
+        <p>Poi si applicano due penalità: il punteggio scende man mano che sale la <strong>probabilità di pioggia</strong> (e crolla quasi a zero se la pioggia è davvero prevista), e le <strong>ore notturne</strong> vengono fortemente ridotte — niente sole, temperature in calo e rugiada fanno sì che di notte il bucato non si asciughi quasi per niente.</p>
+      </details>
+
+      <h2 class="faq-section">Leggere le schermate</h2>
+
+      <details class="faq-item">
+        <summary>Cos'è il grande indicatore circolare?</summary>
+        <p>È l'indice di asciugatura <strong>in questo momento</strong> per la località selezionata. L'anello si riempie e cambia colore col punteggio — verde (ottimo), giallo (discreto), rosso (pessimo) — con sotto un breve verdetto che ti dice cosa fare col cesto del bucato.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Cos'è la "fascia migliore di oggi"?</summary>
+        <p>È il <strong>tratto continuo di ore con le migliori condizioni di asciugatura rimasto oggi</strong> — per esempio "12:00 – 18:00 · indice 87". Stendi all'inizio di quella fascia e il bucato avrà a disposizione le ore migliori della giornata. Il numero dopo "indice" è la media dell'indice sull'intera fascia.</p>
+        <p>Se nessuna ora di oggi raggiunge un buon punteggio, l'etichetta diventa <em>"Fascia possibile (non ideale)"</em> — utilizzabile, ma aspettati un'asciugatura lenta — oppure ti dice chiaramente che oggi è una causa persa.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Come leggo le schede orarie?</summary>
+        <p>Ogni scheda in "Oggi, ora per ora" mostra un'ora del resto della giornata:</p>
+        <ul>
+          <li><strong>Orario</strong> — la scheda "Ora" è l'ora corrente, evidenziata in ambra.</li>
+          <li><strong>Icona meteo</strong> — condizioni previste per quell'ora.</li>
+          <li><strong>Temperatura</strong> — temperatura dell'aria prevista.</li>
+          <li><strong>Badge colorato</strong> — l'indice di asciugatura di quell'ora: verde ≥ 65, giallo 45–64, rosso &lt; 45.</li>
+        </ul>
+        <p>Scorri lateralmente per vedere tutta la giornata.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Come leggo le previsioni dei "prossimi giorni"?</summary>
+        <p>Ogni riga è uno dei prossimi sei giorni, con l'icona delle previsioni e le temperature minima e massima. Il chip colorato a destra è la parte chiave: è <strong>la singola fascia di asciugatura migliore di quel giorno</strong>, scelta con lo stesso criterio di oggi. Chip verde = fascia davvero buona; chip giallo = il meglio di quel giorno è solo discreto; "Sconsigliato" = lascia perdere, tieni il bucato in casa.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Cosa indicano umidità e vento nell'intestazione?</summary>
+        <p>Sono le condizioni attuali usate dall'indice: <strong>umidità relativa</strong> (più è bassa meglio è — sotto il ~50% è ottima) e <strong>velocità del vento</strong> in km/h (una brezza leggera di 10–20 km/h aiuta molto).</p>
+      </details>
+
+      <h2 class="faq-section">Perché l'indice si comporta così</h2>
+
+      <details class="faq-item">
+        <summary>Perché le ore serali e notturne hanno punteggi così bassi?</summary>
+        <p>Dopo il tramonto non c'è radiazione solare, la temperatura scende e l'umidità relativa sale — e la rugiada può perfino rendere i panni <em>più bagnati</em>. Il bucato lasciato fuori la notte resta lì umido, ed è anche così che prende quell'odore di stantio. Per questo le ore notturne valgono circa un terzo delle condizioni diurne equivalenti.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Perché una piccola probabilità di pioggia abbassa così tanto il punteggio?</summary>
+        <p>Perché sbagliare costa caro: un solo rovescio annulla ore di asciugatura e ti costringe a rilavare se è pioggia sporca. L'indice scala gradualmente al salire della probabilità di pioggia e crolla quasi a zero quando la pioggia è probabile (probabilità ≥ 60% o precipitazioni previste). Meglio prudenti che fradici.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Il bucato può asciugarsi col freddo?</summary>
+        <p>Sì — lentamente. Le giornate fredde ma <em>secche</em> e ventilate funzionano comunque: umidità e vento contano più della temperatura, ed è per questo che pesano di più nell'indice. Una giornata invernale tersa con umidità bassa e una brezza può battere una serata estiva afosa.</p>
+      </details>
+
+      <h2 class="faq-section">Dati e privacy</h2>
+
+      <details class="faq-item">
+        <summary>Da dove arrivano i dati meteo?</summary>
+        <p>Da <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a>, una API meteo gratuita e aperta che combina i modelli dei servizi meteorologici nazionali. Le previsioni si aggiornano ogni volta che apri l'app o scegli una località. Come ogni previsione, l'accuratezza cala guardando più avanti — considera le fasce del 5°–6° giorno un'indicazione di massima.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Come viene usata la mia posizione?</summary>
+        <p>La posizione serve solo a richiedere le previsioni: le coordinate vanno a Open-Meteo (meteo) e a BigDataCloud (per mostrare il nome della città). Nient'altro viene inviato da nessuna parte. L'ultima località consultata è salvata solo nel tuo browser, così l'app riapre dove l'avevi lasciata.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>L'app funziona offline?</summary>
+        <p>L'app in sé si carica offline dopo la prima visita, e mostra <strong>l'ultima previsione scaricata</strong> per la tua località. Senza connessione non può ottenere dati freschi, quindi considera i numeri offline una fotografia dell'ultimo aggiornamento.</p>
+      </details>
+
+      <details class="faq-item">
+        <summary>Posso installare Clotheshorse come una vera app?</summary>
+        <p>Sì — è una PWA. Su <strong>Android/Chrome</strong>: menu → "Aggiungi a schermata Home" (o "Installa app"). Su <strong>iPhone/iPad</strong>: Condividi → "Aggiungi alla schermata Home". Su <strong>desktop</strong> Chrome/Edge: clicca l'icona di installazione nella barra degli indirizzi. Si apre a tutto schermo, con la sua icona, come un'app nativa.</p>
+      </details>
+
+      <p class="faq-outro">Ancora dubbi? La versione breve: <strong>badge verde = stendi, badge rosso = non stendere.</strong></p>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div class="footer-brand-row">
+            <svg class="footer-logo" viewBox="0 0 64 64" aria-hidden="true">
+              <circle cx="46" cy="16" r="9" fill="var(--sun)" />
+              <path d="M6 24 Q32 34 58 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" />
+              <path d="M22 28.5 l-3 3 v13 a2 2 0 0 0 2 2 h10 a2 2 0 0 0 2-2 v-13 l-3-3 -2.5 2 -3-2z" fill="currentColor" />
+              <path d="M42 31 v11 a1.8 1.8 0 0 0 1.8 1.8 h7 a1.8 1.8 0 0 0 1.8-1.8 v-11" fill="none" stroke="currentColor" stroke-width="3" stroke-linejoin="round" />
+            </svg>
+            <span class="footer-name">Clotheshorse</span>
+          </div>
+          <p>Le previsioni meteo tradotte in una risposta semplice: quando stendere i panni per farli asciugare prima.</p>
+        </div>
+
+        <nav class="footer-col" aria-label="Mappa del sito">
+          <h4>Mappa del sito</h4>
+          <a href="./">Previsioni</a>
+          <a href="faq.it.html">FAQ — come leggere l'app</a>
+        </nav>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Clotheshorse · Dati meteo di <a href="https://open-meteo.com/" target="_blank" rel="noopener">Open-Meteo</a></span>
+        <span class="footer-joke">Nessuna responsabilità per calzini bagnati.</span>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
