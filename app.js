@@ -30,6 +30,9 @@ const els = {
   bestBanner: $("#best-banner"),
   bestLabel: $("#best-label"),
   bestTime: $("#best-time"),
+  bestIcon: $("#best-icon"),
+  bestScore: $("#best-score"),
+  bestScoreValue: $("#best-score-value"),
   hoursScroll: $("#hours-scroll"),
   week: $("#week"),
 };
@@ -137,6 +140,13 @@ function bestBandForDay(hours) {
 }
 
 const fmtBand = (b) => `${String(b.start).padStart(2, "0")}:00 – ${String(b.end + 1).padStart(2, "0")}:00`;
+
+/* The weather a band actually looks like: take its middle hour. */
+function bandWeather(dayHours, band) {
+  const mid = Math.round((band.start + band.end) / 2);
+  const h = dayHours.find((x) => x.hour === mid) || dayHours.find((x) => x.hour >= band.start);
+  return h ? wmo(h.code, h.isDay) : null;
+}
 
 /* ---------- API ---------- */
 async function fetchForecast(lat, lon) {
@@ -301,14 +311,24 @@ function render(place, data) {
     .join("");
 
   /* Best band today */
-  const bestToday = bestBandForDay(todayHours.length ? todayHours : hours.filter((h) => h.date === todayKey));
+  const bandPool = todayHours.length ? todayHours : hours.filter((h) => h.date === todayKey);
+  const bestToday = bestBandForDay(bandPool);
   els.bestBanner.hidden = false;
+  els.bestBanner.classList.toggle("is-empty", !bestToday);
   if (bestToday) {
+    const bw = bandWeather(bandPool, bestToday);
+    els.bestIcon.src = (bw || { icon }).icon;
+    els.bestIcon.alt = (bw || { desc }).desc;
     els.bestLabel.textContent = bestToday.quality === "great" ? t("bestWindow") : t("possibleWindow");
-    els.bestTime.textContent = fmtBand(bestToday) + " · " + t("index") + " " + Math.round(bestToday.avg);
+    els.bestTime.textContent = fmtBand(bestToday);
+    els.bestScoreValue.textContent = Math.round(bestToday.avg);
+    els.bestScore.hidden = false;
   } else {
+    els.bestIcon.src = icon;
+    els.bestIcon.alt = desc;
     els.bestLabel.textContent = t("today");
     els.bestTime.textContent = t("noLuck");
+    els.bestScore.hidden = true;
   }
 
   /* Week */

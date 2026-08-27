@@ -27,33 +27,32 @@
   <div class="wind-field" aria-hidden="true">
     <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
       <defs>
-        <path id="ch-wisp" d="M2 15C90 3 210 1 322 7C214 13 92 21 2 15Z" />
-        <path id="ch-curl" d="M2 12C70 2 150 4 214 12C158 8 84 9 2 12Z" />
-        <linearGradient id="ch-air" x1="0" y1="0" x2="1" y2="0">
-          <stop offset="0" stop-color="#4fe3ff" stop-opacity="0" />
-          <stop offset="0.45" stop-color="#9df0ff" stop-opacity="0.95" />
-          <stop offset="1" stop-color="#4fe3ff" stop-opacity="0" />
-        </linearGradient>
-        <radialGradient id="ch-puff">
-          <stop offset="0" stop-color="#8ecfff" stop-opacity="0.6" />
-          <stop offset="1" stop-color="#8ecfff" stop-opacity="0" />
-        </radialGradient>
+        <!-- gust: curved speed lines that curl at the tip, the way wind is drawn -->
+        <g id="ch-gust" fill="none" stroke="#7fe9ff" stroke-width="7" stroke-linecap="round">
+          <path d="M4 18C48 3 110 3 150 12a13 13 0 1 0-13-13" />
+          <path d="M30 46C68 36 106 36 134 42a10 10 0 1 1 10 10" />
+          <path d="M14 70C48 62 80 62 104 66" />
+        </g>
+        <!-- cloud: the classic three-bump silhouette -->
+        <g id="ch-cloud" fill="#a9daff">
+          <circle cx="38" cy="44" r="23" />
+          <circle cx="72" cy="31" r="31" />
+          <circle cx="109" cy="46" r="21" />
+          <rect x="34" y="46" width="79" height="23" rx="11.5" />
+        </g>
       </defs>
 
-      <ellipse class="puff" rx="190" ry="56" fill="url(#ch-puff)" style="--y:130px;--d:52s;--delay:-6s" />
-      <ellipse class="puff" rx="240" ry="70" fill="url(#ch-puff)" style="--y:400px;--d:64s;--delay:-34s" />
-      <ellipse class="puff" rx="160" ry="48" fill="url(#ch-puff)" style="--y:610px;--d:58s;--delay:-20s" />
-      <ellipse class="puff" rx="210" ry="60" fill="url(#ch-puff)" style="--y:760px;--d:70s;--delay:-52s" />
+      <use class="cloud" href="#ch-cloud" style="--y:70px;--s:1.5;--d:58s;--delay:-6s;--o:.2" />
+      <use class="cloud" href="#ch-cloud" style="--y:330px;--s:2.1;--d:74s;--delay:-38s;--o:.15" />
+      <use class="cloud" href="#ch-cloud" style="--y:560px;--s:1.2;--d:64s;--delay:-22s;--o:.22" />
+      <use class="cloud" href="#ch-cloud" style="--y:700px;--s:1.8;--d:80s;--delay:-58s;--o:.16" />
 
-      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:60px;--s:1.35;--d:15s;--delay:-3s;--o:.75" />
-      <use class="wisp" href="#ch-curl" fill="url(#ch-air)" style="--y:150px;--s:0.9;--d:11s;--delay:-7s;--o:.6" />
-      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:245px;--s:0.7;--d:9s;--delay:-2s;--o:.5" />
-      <use class="wisp" href="#ch-curl" fill="url(#ch-air)" style="--y:330px;--s:1.5;--d:17s;--delay:-12s;--o:.7" />
-      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:425px;--s:1;--d:12s;--delay:-5s;--o:.62" />
-      <use class="wisp" href="#ch-curl" fill="url(#ch-air)" style="--y:510px;--s:0.75;--d:10s;--delay:-9s;--o:.5" />
-      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:600px;--s:1.25;--d:16s;--delay:-1s;--o:.68" />
-      <use class="wisp" href="#ch-curl" fill="url(#ch-air)" style="--y:690px;--s:0.95;--d:13s;--delay:-8s;--o:.55" />
-      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:775px;--s:1.15;--d:14s;--delay:-11s;--o:.6" />
+      <use class="gust" href="#ch-gust" style="--y:40px;--s:1.1;--d:14s;--delay:-3s;--o:.5" />
+      <use class="gust" href="#ch-gust" style="--y:200px;--s:0.7;--d:10s;--delay:-7s;--o:.38" />
+      <use class="gust" href="#ch-gust" style="--y:300px;--s:1.4;--d:18s;--delay:-13s;--o:.45" />
+      <use class="gust" href="#ch-gust" style="--y:450px;--s:0.85;--d:12s;--delay:-2s;--o:.42" />
+      <use class="gust" href="#ch-gust" style="--y:620px;--s:1.25;--d:16s;--delay:-9s;--o:.46" />
+      <use class="gust" href="#ch-gust" style="--y:740px;--s:0.75;--d:11s;--delay:-15s;--o:.36" />
     </svg>
   </div>
 
