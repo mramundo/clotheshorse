@@ -107,8 +107,10 @@ desktop) and it opens standalone with its own icon.
 ## Interface
 
 Wind is the thing that actually dries laundry, so it drives the visual
-language: streaks of air drift across the page, the pegged clothes on the
-empty state flap, and the anemometer under the wind reading runs at a speed
+language: tapered wisps and soft cloud puffs drift along undulating paths
+behind the content — blurred and strictly decorative, never crossing a word,
+since the cards are opaque enough to sit in front of them. The pegged clothes
+on the empty state flap, and the anemometer under the wind reading runs at a speed
 derived from the real wind speed (about 3s per streak in dead calm, half a
 second at 30 km/h). Data carries its own shape too — each hourly card fills
 from the bottom in proportion to its index, so the day reads as a bar chart

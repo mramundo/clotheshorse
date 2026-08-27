@@ -18,8 +18,36 @@
 </head>
 <body>
   <div class="wind-field" aria-hidden="true">
-    <span class="gust"></span><span class="gust"></span><span class="gust"></span><span class="gust"></span>
-    <span class="gust"></span><span class="gust"></span><span class="gust"></span><span class="gust"></span>
+    <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
+      <defs>
+        <path id="ch-wisp" d="M2 15C90 3 210 1 322 7C214 13 92 21 2 15Z" />
+        <path id="ch-curl" d="M2 12C70 2 150 4 214 12C158 8 84 9 2 12Z" />
+        <linearGradient id="ch-air" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0" stop-color="#4fe3ff" stop-opacity="0" />
+          <stop offset="0.45" stop-color="#9df0ff" stop-opacity="0.95" />
+          <stop offset="1" stop-color="#4fe3ff" stop-opacity="0" />
+        </linearGradient>
+        <radialGradient id="ch-puff">
+          <stop offset="0" stop-color="#8ecfff" stop-opacity="0.6" />
+          <stop offset="1" stop-color="#8ecfff" stop-opacity="0" />
+        </radialGradient>
+      </defs>
+
+      <ellipse class="puff" rx="190" ry="56" fill="url(#ch-puff)" style="--y:130px;--d:52s;--delay:-6s" />
+      <ellipse class="puff" rx="240" ry="70" fill="url(#ch-puff)" style="--y:400px;--d:64s;--delay:-34s" />
+      <ellipse class="puff" rx="160" ry="48" fill="url(#ch-puff)" style="--y:610px;--d:58s;--delay:-20s" />
+      <ellipse class="puff" rx="210" ry="60" fill="url(#ch-puff)" style="--y:760px;--d:70s;--delay:-52s" />
+
+      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:60px;--s:1.35;--d:15s;--delay:-3s;--o:.75" />
+      <use class="wisp" href="#ch-curl" fill="url(#ch-air)" style="--y:150px;--s:0.9;--d:11s;--delay:-7s;--o:.6" />
+      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:245px;--s:0.7;--d:9s;--delay:-2s;--o:.5" />
+      <use class="wisp" href="#ch-curl" fill="url(#ch-air)" style="--y:330px;--s:1.5;--d:17s;--delay:-12s;--o:.7" />
+      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:425px;--s:1;--d:12s;--delay:-5s;--o:.62" />
+      <use class="wisp" href="#ch-curl" fill="url(#ch-air)" style="--y:510px;--s:0.75;--d:10s;--delay:-9s;--o:.5" />
+      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:600px;--s:1.25;--d:16s;--delay:-1s;--o:.68" />
+      <use class="wisp" href="#ch-curl" fill="url(#ch-air)" style="--y:690px;--s:0.95;--d:13s;--delay:-8s;--o:.55" />
+      <use class="wisp" href="#ch-wisp" fill="url(#ch-air)" style="--y:775px;--s:1.15;--d:14s;--delay:-11s;--o:.6" />
+    </svg>
   </div>
 
   <div class="app" id="app">
