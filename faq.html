@@ -26,33 +26,54 @@
 <body>
   <div class="wind-field" aria-hidden="true">
     <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
-      <defs>
-        <!-- gust: curved speed lines that curl at the tip, the way wind is drawn -->
-        <g id="ch-gust" fill="none" stroke="#7fe9ff" stroke-width="7" stroke-linecap="round">
-          <path d="M4 18C48 3 110 3 150 12a13 13 0 1 0-13-13" />
-          <path d="M30 46C68 36 106 36 134 42a10 10 0 1 1 10 10" />
-          <path d="M14 70C48 62 80 62 104 66" />
+      <!-- Clouds keep the silhouette of the app's own Meteocons cloud and
+           breathe slowly; gusts are curling speed lines whose dash pattern
+           runs along the stroke, the way the Meteocons wind icon moves. -->
+      <g class="cloud" style="--y:60px;--s:5;--d:120s;--delay:-12s;--o:.17">
+        <g class="cloud-body" style="--breathe:11s">
+          <path d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z" />
         </g>
-        <!-- cloud: the classic three-bump silhouette -->
-        <g id="ch-cloud" fill="#a9daff">
-          <circle cx="38" cy="44" r="23" />
-          <circle cx="72" cy="31" r="31" />
-          <circle cx="109" cy="46" r="21" />
-          <rect x="34" y="46" width="79" height="23" rx="11.5" />
+      </g>
+      <g class="cloud" style="--y:300px;--s:7;--d:165s;--delay:-70s;--o:.19">
+        <g class="cloud-body" style="--breathe:14s;--breathe-delay:-4s">
+          <path d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z" />
         </g>
-      </defs>
+      </g>
+      <g class="cloud" style="--y:540px;--s:4;--d:135s;--delay:-45s;--o:.13">
+        <g class="cloud-body" style="--breathe:9s;--breathe-delay:-6s">
+          <path d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z" />
+        </g>
+      </g>
+      <g class="cloud" style="--y:690px;--s:6;--d:150s;--delay:-100s;--o:.15">
+        <g class="cloud-body" style="--breathe:13s;--breathe-delay:-2s">
+          <path d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z" />
+        </g>
+      </g>
 
-      <use class="cloud" href="#ch-cloud" style="--y:70px;--s:1.5;--d:58s;--delay:-6s;--o:.2" />
-      <use class="cloud" href="#ch-cloud" style="--y:330px;--s:2.1;--d:74s;--delay:-38s;--o:.15" />
-      <use class="cloud" href="#ch-cloud" style="--y:560px;--s:1.2;--d:64s;--delay:-22s;--o:.22" />
-      <use class="cloud" href="#ch-cloud" style="--y:700px;--s:1.8;--d:80s;--delay:-58s;--o:.16" />
-
-      <use class="gust" href="#ch-gust" style="--y:40px;--s:1.1;--d:14s;--delay:-3s;--o:.5" />
-      <use class="gust" href="#ch-gust" style="--y:200px;--s:0.7;--d:10s;--delay:-7s;--o:.38" />
-      <use class="gust" href="#ch-gust" style="--y:300px;--s:1.4;--d:18s;--delay:-13s;--o:.45" />
-      <use class="gust" href="#ch-gust" style="--y:450px;--s:0.85;--d:12s;--delay:-2s;--o:.42" />
-      <use class="gust" href="#ch-gust" style="--y:620px;--s:1.25;--d:16s;--delay:-9s;--o:.46" />
-      <use class="gust" href="#ch-gust" style="--y:740px;--s:0.75;--d:11s;--delay:-15s;--o:.36" />
+      <g class="gust" style="--y:30px;--s:1.5;--d:44s;--delay:-6s;--o:.42">
+        <path style="--flow:3.4s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path class="steel" style="--flow:4.2s;--flow-delay:-1.6s" d="M8 62C52 54 104 52 146 58" />
+        <path style="--flow:3.8s;--flow-delay:-2.4s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:225px;--s:1;--d:34s;--delay:-20s;--o:.34">
+        <path class="steel" style="--flow:3s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path style="--flow:3.9s;--flow-delay:-1.1s" d="M8 62C52 54 104 52 146 58" />
+        <path class="steel" style="--flow:3.3s;--flow-delay:-2s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:420px;--s:1.9;--d:52s;--delay:-33s;--o:.38">
+        <path style="--flow:4.6s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path class="steel" style="--flow:3.6s;--flow-delay:-2.2s" d="M8 62C52 54 104 52 146 58" />
+        <path style="--flow:4.1s;--flow-delay:-0.8s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:610px;--s:1.2;--d:38s;--delay:-14s;--o:.36">
+        <path class="steel" style="--flow:3.2s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path style="--flow:4.4s;--flow-delay:-1.9s" d="M8 62C52 54 104 52 146 58" />
+        <path class="steel" style="--flow:3.7s;--flow-delay:-3s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:750px;--s:1.6;--d:48s;--delay:-40s;--o:.3">
+        <path style="--flow:4s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path class="steel" style="--flow:3.1s;--flow-delay:-1.4s" d="M8 62C52 54 104 52 146 58" />
+      </g>
     </svg>
   </div>
 
