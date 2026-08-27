@@ -62,7 +62,8 @@ body::before {
 
 /* ============ Wind field ============
    Curling gusts and breathing clouds drifting behind the content:
-   atmosphere only, never over a word. Disabled for reduced motion.
+   atmosphere only, never over a word. Drawn crisp: no blur, so the
+   shapes stay readable as shapes. Disabled for reduced motion.
    --sf shrinks the shapes on narrow screens, where the viewBox is
    cropped hard by `slice` and everything would otherwise be huge. */
 .wind-field {
@@ -75,7 +76,6 @@ body::before {
   transform: translateZ(0);
   backface-visibility: hidden;
   contain: strict;
-  filter: blur(0.9px);
 }
 .wind-field svg { display: block; width: 100%; height: 100%; }
 
@@ -147,6 +147,20 @@ body::before {
   50%  { transform: translate(500px, calc(var(--y) - 26px)) scale(calc(var(--s, 1) * var(--sf, 1))); }
   85%  { opacity: var(--o, 0.15); }
   100% { transform: translate(1560px, var(--y)) scale(calc(var(--s, 1) * var(--sf, 1))); opacity: 0; }
+}
+
+/* Text that sits straight on the page background, with the wind field
+   crossing behind it, needs its own separation from the white shapes. */
+.welcome h1,
+.welcome p,
+.section-title,
+.legend,
+.site-footer,
+.faq-title,
+.faq-intro,
+.faq-section,
+.faq-outro {
+  text-shadow: 0 2px 12px rgba(4, 9, 20, 0.75);
 }
 
 .app {
