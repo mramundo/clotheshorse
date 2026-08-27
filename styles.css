@@ -100,7 +100,7 @@ body::before {
   stroke-dasharray: 96 40;
   animation: flow var(--flow, 3.5s) linear var(--flow-delay, 0s) infinite;
 }
-.gust path.steel { stroke: #e4f4ff; }
+.gust path.steel { stroke: #ffffff; }
 
 @keyframes flow {
   from { stroke-dashoffset: 136; }
@@ -431,32 +431,6 @@ body::before {
   margin-top: 0.2rem;
 }
 
-/* Live anemometer: the streaks run at the speed of the actual wind */
-.wind-meter {
-  position: relative;
-  width: 58px;
-  height: 14px;
-  margin-top: 0.35rem;
-  overflow: hidden;
-}
-.wind-meter i {
-  position: absolute;
-  left: -60%;
-  height: 2px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, transparent, var(--wind), transparent);
-  animation: gust-mini var(--gust-speed, 2.4s) linear infinite;
-}
-.wind-meter i:nth-child(1) { top: 2px;  width: 55%; }
-.wind-meter i:nth-child(2) { top: 6px;  width: 80%; animation-delay: calc(var(--gust-speed, 2.4s) * -0.45); }
-.wind-meter i:nth-child(3) { top: 10px; width: 40%; animation-delay: calc(var(--gust-speed, 2.4s) * -0.75); }
-
-@keyframes gust-mini {
-  0%   { transform: translateX(0); opacity: 0; }
-  20%  { opacity: 1; }
-  80%  { opacity: 1; }
-  100% { transform: translateX(160px); opacity: 0; }
-}
 
 .hero-right { text-align: center; flex-shrink: 0; }
 .gauge { position: relative; width: 152px; height: 152px; margin: 0 auto; }

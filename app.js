@@ -23,7 +23,6 @@ const els = {
   nowDesc: $("#now-desc"),
   nowHum: $("#now-hum"),
   nowWind: $("#now-wind"),
-  windMeter: $("#wind-meter"),
   gaugeFill: $("#gauge-fill"),
   gaugeValue: $("#gauge-value"),
   gaugeVerdict: $("#gauge-verdict"),
@@ -277,9 +276,6 @@ function render(place, data) {
   els.nowDesc.textContent = desc;
   els.nowHum.textContent = Math.round(cur.relative_humidity_2m) + "%";
   els.nowWind.textContent = Math.round(cur.wind_speed_10m) + " km/h";
-  // dead calm drifts at ~3s per streak, a 30 km/h wind rips across in ~0.5s
-  const gustSpeed = Math.max(0.5, 3 - cur.wind_speed_10m / 12).toFixed(2);
-  els.windMeter.style.setProperty("--gust-speed", gustSpeed + "s");
 
   const nowScore = dryingScore({
     temp: cur.temperature_2m,

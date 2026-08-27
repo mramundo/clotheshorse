@@ -112,10 +112,8 @@ stroke, so each one whips forward as it crosses; clouds keep the silhouette
 of the app's own weather icons and breathe slowly instead — two different
 kinds of motion, both unhurried, with bars of mist sliding over one another
 in between. They all drift behind the content, since the cards are opaque
-enough to sit in front of them. The pegged clothes
-on the empty state flap, and the anemometer under the wind reading runs at a speed
-derived from the real wind speed (about 3s per streak in dead calm, half a
-second at 30 km/h). Data carries its own shape too — each hourly card fills
+enough to sit in front of them, and the pegged clothes on the empty state
+flap. Data carries its own shape too — each hourly card fills
 from the bottom in proportion to its index, so the day reads as a bar chart
 before you read a number, and every forecast row draws a 24-hour track
 showing *where* the good window sits. Everything animated sits behind
