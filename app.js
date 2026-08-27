@@ -23,6 +23,7 @@ const els = {
   nowDesc: $("#now-desc"),
   nowHum: $("#now-hum"),
   nowWind: $("#now-wind"),
+  windMeter: $("#wind-meter"),
   gaugeFill: $("#gauge-fill"),
   gaugeValue: $("#gauge-value"),
   gaugeVerdict: $("#gauge-verdict"),
@@ -266,6 +267,9 @@ function render(place, data) {
   els.nowDesc.textContent = desc;
   els.nowHum.textContent = Math.round(cur.relative_humidity_2m) + "%";
   els.nowWind.textContent = Math.round(cur.wind_speed_10m) + " km/h";
+  // dead calm drifts at ~3s per streak, a 30 km/h wind rips across in ~0.5s
+  const gustSpeed = Math.max(0.5, 3 - cur.wind_speed_10m / 12).toFixed(2);
+  els.windMeter.style.setProperty("--gust-speed", gustSpeed + "s");
 
   const nowScore = dryingScore({
     temp: cur.temperature_2m,
@@ -286,11 +290,12 @@ function render(place, data) {
     .map((h, i) => {
       const hw = wmo(h.code, h.isDay);
       const isNow = h.date === cityNow.dateKey && h.hour === cityNow.hour;
-      return `<div class="hour-card${isNow ? " is-now" : ""}" style="animation-delay:${Math.min(i * 30, 400)}ms">
+      const cls = scoreClass(h.score);
+      return `<div class="hour-card ${cls}${isNow ? " is-now" : ""}" style="animation-delay:${Math.min(i * 35, 450)}ms;--score:${h.score}">
         <span class="h-time">${isNow ? t("now") : String(h.hour).padStart(2, "0") + ":00"}</span>
         <img class="h-icon" src="${hw.icon}" alt="${hw.desc}" />
         <span class="h-temp">${Math.round(h.temp)}°</span>
-        <span class="h-score ${scoreClass(h.score)}">${h.score}</span>
+        <span class="h-score ${cls}">${h.score}</span>
       </div>`;
     })
     .join("");
@@ -315,9 +320,12 @@ function render(place, data) {
       const dw = wmo(D.weather_code[i], true);
       const dayHours = hours.filter((h) => h.date === dayKey);
       const band = bestBandForDay(dayHours);
+      // chip plus a 24-hour track showing where in the day the window falls
       const chip = band
-        ? `<span class="band-chip ${band.quality}">${fmtBand(band)}</span>`
-        : `<span class="band-chip bad">${t("notRecommended")}</span>`;
+        ? `<span class="band-chip ${band.quality}">${fmtBand(band)}</span>
+           <span class="day-track"><i class="${band.quality}" style="left:${(band.start / 24) * 100}%;width:${((band.end + 1 - band.start) / 24) * 100}%;animation-delay:${180 + i * 60}ms"></i></span>`
+        : `<span class="band-chip bad">${t("notRecommended")}</span>
+           <span class="day-track"></span>`;
       const dayName = i === 1 ? t("tomorrow") : d.toLocaleDateString(DATE_LOCALE, { weekday: "long" });
       const daySub = d.toLocaleDateString(DATE_LOCALE, { day: "numeric", month: "short" });
       return `<div class="day-row">

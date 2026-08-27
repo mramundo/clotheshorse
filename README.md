@@ -68,7 +68,7 @@ you shows *its* current hour, not yours.
 .
 ├── index.html            # markup, app states (welcome / loading / error / dashboard)
 ├── faq.html              # how to read the app, one question at a time
-├── styles.css            # design system: dark navy, amber accent, glassmorphism
+├── styles.css            # design system: dark navy, amber/cyan accents, wind motion
 ├── app.js                # forecast fetch, Drying Index, window picking, rendering
 ├── sw.js                 # service worker: shell cache-first, API network-first
 ├── manifest.webmanifest  # PWA manifest (standalone, any + maskable icons)
@@ -103,6 +103,19 @@ Once visited, the app shell and icons work offline; the last fetched forecast
 is served from cache when the network is gone. Install it from the browser
 menu ("Add to Home Screen" on mobile, the address-bar install icon on
 desktop) and it opens standalone with its own icon.
+
+## Interface
+
+Wind is the thing that actually dries laundry, so it drives the visual
+language: streaks of air drift across the page, the pegged clothes on the
+empty state flap, and the anemometer under the wind reading runs at a speed
+derived from the real wind speed (about 3s per streak in dead calm, half a
+second at 30 km/h). Data carries its own shape too — each hourly card fills
+from the bottom in proportion to its index, so the day reads as a bar chart
+before you read a number, and every forecast row draws a 24-hour track
+showing *where* the good window sits. Everything animated sits behind
+`prefers-reduced-motion`, which disables the motion and the wind field
+entirely.
 
 ## Notes
 

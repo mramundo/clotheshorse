@@ -13,10 +13,15 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="wind-field" aria-hidden="true">
+    <span class="gust"></span><span class="gust"></span><span class="gust"></span><span class="gust"></span>
+    <span class="gust"></span><span class="gust"></span><span class="gust"></span><span class="gust"></span>
+  </div>
+
   <div class="app" id="app">
 
     <header class="topbar">
@@ -55,13 +60,13 @@
           <svg viewBox="0 0 320 160">
             <circle cx="262" cy="38" r="26" fill="var(--sun)" opacity="0.95"/>
             <path d="M10 60 Q160 92 310 60" fill="none" stroke="var(--line)" stroke-width="4" stroke-linecap="round"/>
-            <g fill="var(--cloth-1)">
+            <g fill="var(--cloth-1)" class="cloth cloth-a">
               <path d="M70 73 l-9 9 v34 a5 5 0 0 0 5 5 h28 a5 5 0 0 0 5-5 v-34 l-9-9 -7 6z"/>
             </g>
-            <g fill="var(--cloth-2)">
+            <g fill="var(--cloth-2)" class="cloth cloth-b">
               <path d="M150 80 v40 a4 4 0 0 0 4 4 h26 a4 4 0 0 0 4-4 v-40z"/>
             </g>
-            <g fill="var(--cloth-3)">
+            <g fill="var(--cloth-3)" class="cloth cloth-c">
               <path d="M228 76 l-8 8 v26 a5 5 0 0 0 5 5 h24 a5 5 0 0 0 5-5 v-26 l-8-8 -6 5z"/>
             </g>
             <g fill="var(--peg)">
@@ -105,7 +110,11 @@
             <p id="now-desc" class="now-desc">—</p>
             <ul class="now-meta">
               <li><span data-i18n="humidity">Humidity</span><strong id="now-hum">—</strong></li>
-              <li><span data-i18n="wind">Wind</span><strong id="now-wind">—</strong></li>
+              <li>
+                <span data-i18n="wind">Wind</span>
+                <strong id="now-wind">—</strong>
+                <span class="wind-meter" id="wind-meter" aria-hidden="true"><i></i><i></i><i></i></span>
+              </li>
             </ul>
           </div>
           <div class="hero-right">
@@ -124,7 +133,11 @@
         </div>
 
         <div class="best-banner card" id="best-banner" hidden>
-          <svg viewBox="0 0 24 24" aria-hidden="true" class="best-icon"><path d="M12 3v2m6.4.6-1.4 1.4M21 12h-2M5 12H3m3-5-1.4-1.4M12 8a4 4 0 110 8 4 4 0 010-8z" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M7 20h10" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+          <svg viewBox="0 0 24 24" aria-hidden="true" class="best-icon" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <path d="M3 8h11a3 3 0 1 0-3-3" />
+            <path d="M3 16h14a3 3 0 1 1-3 3" />
+            <path d="M3 12h7" />
+          </svg>
           <div>
             <span class="best-label" id="best-label" data-i18n="bestWindow">Today's best window</span>
             <strong class="best-time" id="best-time">—</strong>
