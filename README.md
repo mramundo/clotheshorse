@@ -61,6 +61,9 @@ you shows *its* current hour, not yours.
   only to display a city name for GPS coordinates. Free client API, no key.
 - **[Meteocons](https://github.com/basmilius/weather-icons)** — colored
   fill-style weather icons (MIT), bundled locally with day/night variants.
+  The forecast icons come from v2; the windmill, wind spinner and windsock
+  along the bottom edge are from the v3 set (`@meteocons/svg`), which ships
+  them with their own SMIL animation.
 
 ## Project structure
 
@@ -110,9 +113,11 @@ Wind is the thing that actually dries laundry, so it drives the visual
 language. Gusts are curling speed lines whose dash pattern runs along the
 stroke, so each one whips forward as it crosses; clouds keep the silhouette
 of the app's own weather icons and breathe slowly instead — two different
-kinds of motion, both unhurried. Both drift behind the content, strictly
-decorative and never over a word, since the cards are opaque enough to sit in
-front of them. The pegged clothes
+kinds of motion, both unhurried, with bars of mist sliding over one another
+in between. They drift behind the content, since the cards are opaque enough
+to sit in front of them, while a fixed strip along the bottom edge — turbines,
+spinners and a windsock, each turning on its own — keeps something moving even
+when the page is still. The pegged clothes
 on the empty state flap, and the anemometer under the wind reading runs at a speed
 derived from the real wind speed (about 3s per streak in dead calm, half a
 second at 30 km/h). Data carries its own shape too — each hourly card fills
