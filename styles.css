@@ -94,13 +94,13 @@ body::before {
    stroke, so each one whips forward as the whole gust crosses the page */
 .gust path {
   fill: none;
-  stroke: #e8f6ff;
-  stroke-width: 6;
+  stroke: #ffffff;
+  stroke-width: 5;
   stroke-linecap: round;
   stroke-dasharray: 96 40;
   animation: flow var(--flow, 3.5s) linear var(--flow-delay, 0s) infinite;
 }
-.gust path.steel { stroke: #bcdcef; }
+.gust path.steel { stroke: #e4f4ff; }
 
 @keyframes flow {
   from { stroke-dashoffset: 136; }
@@ -120,8 +120,8 @@ body::before {
 /* mist: stacked bars of haze that slide over one another as they drift */
 .mist path {
   fill: none;
-  stroke: #f2f9ff;
-  stroke-width: 8;
+  stroke: #ffffff;
+  stroke-width: 7;
   stroke-linecap: round;
   animation: haze var(--haze, 8s) ease-in-out var(--haze-delay, 0s) infinite;
 }
@@ -131,7 +131,7 @@ body::before {
 }
 
 /* clouds: slower, heavier, and they breathe instead of whipping */
-.cloud path { fill: #f6faff; }
+.cloud path { fill: #ffffff; }
 .cloud-body {
   transform-origin: 32px 34px;
   animation: breathe var(--breathe, 11s) ease-in-out var(--breathe-delay, 0s) infinite;
@@ -149,37 +149,12 @@ body::before {
   100% { transform: translate(1560px, var(--y)) scale(calc(var(--s, 1) * var(--sf, 1))); opacity: 0; }
 }
 
-/* ============ Wind ground ============
-   A fixed strip of wind hardware along the bottom edge — turbines,
-   spinners and a windsock, each carrying Meteocons' own animation — so
-   there is always something turning even when the page is still. */
-.wind-ground {
-  position: fixed;
-  left: 0; right: 0; bottom: 0;
-  height: 130px;
-  /* above the content, or the opaque cards would swallow it — kept faint
-     and faded at the top so it never fights with a line of text */
-  z-index: 2;
-  overflow: hidden;
-  pointer-events: none;
-  contain: strict;
-  -webkit-mask-image: linear-gradient(to top, #000 45%, transparent 92%);
-  mask-image: linear-gradient(to top, #000 45%, transparent 92%);
-}
-.ground-icon {
-  position: absolute;
-  bottom: -14px;
-  left: var(--x, 50%);
-  width: var(--w, 70px);
-  opacity: var(--o, 0.28);
-}
-
 .app {
   position: relative;
   z-index: 1;
   max-width: 900px;
   margin: 0 auto;
-  padding: max(env(safe-area-inset-top), 1rem) 1.1rem calc(env(safe-area-inset-bottom) + 7rem);
+  padding: max(env(safe-area-inset-top), 1rem) 1.1rem calc(env(safe-area-inset-bottom) + 2rem);
 }
 
 /* ============ Topbar ============ */
@@ -952,8 +927,6 @@ body::before {
 
 @media (max-width: 680px) {
   .wind-field { --sf: 0.38; }
-  .wind-ground { height: 86px; }
-  .ground-icon { width: calc(var(--w, 70px) * 0.6); }
   .topbar { gap: 0.8rem; padding-bottom: 1.2rem; }
   .brand-text { display: none; }
   .hero { flex-direction: column; text-align: center; padding: 1.6rem 1.2rem; }
@@ -987,5 +960,5 @@ body::before {
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .wind-field, .wind-ground { display: none; }
+  .wind-field { display: none; }
 }

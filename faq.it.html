@@ -19,84 +19,121 @@
     <svg viewBox="0 0 1200 800" preserveAspectRatio="xMidYMid slice">
       <!-- Clouds keep the silhouette of the app's own Meteocons cloud and
            breathe slowly; gusts are curling speed lines whose dash pattern
-           runs along the stroke, the way the Meteocons wind icon moves. -->
-      <g class="cloud" style="--y:60px;--s:5;--d:120s;--delay:-12s;--o:.17">
+           runs along the stroke, the way the Meteocons wind icon moves;
+           mist is stacked bars of haze sliding over one another. -->
+      <g class="cloud" style="--y:120px;--s:3.4;--d:130s;--delay:-18s;--o:.13">
         <g class="cloud-body" style="--breathe:11s">
           <path d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z" />
         </g>
       </g>
-      <g class="cloud" style="--y:300px;--s:7;--d:165s;--delay:-70s;--o:.19">
-        <g class="cloud-body" style="--breathe:14s;--breathe-delay:-4s">
-          <path d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z" />
-        </g>
-      </g>
-      <g class="cloud" style="--y:540px;--s:4;--d:135s;--delay:-45s;--o:.13">
-        <g class="cloud-body" style="--breathe:9s;--breathe-delay:-6s">
-          <path d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z" />
-        </g>
-      </g>
-      <g class="cloud" style="--y:690px;--s:6;--d:150s;--delay:-100s;--o:.15">
-        <g class="cloud-body" style="--breathe:13s;--breathe-delay:-2s">
+      <g class="cloud" style="--y:560px;--s:2.6;--d:150s;--delay:-84s;--o:.11">
+        <g class="cloud-body" style="--breathe:14s;--breathe-delay:-5s">
           <path d="M46.5 31.5h-.32a10.49 10.49 0 00-19.11-8 7 7 0 00-10.57 6 7.21 7.21 0 00.1 1.14A7.5 7.5 0 0018 45.5a4.19 4.19 0 00.5 0v0h28a7 7 0 000-14z" />
         </g>
       </g>
 
-      <g class="mist" style="--y:170px;--s:1.5;--d:70s;--delay:-8s;--o:.3">
+      <g class="mist" style="--y:60px;--s:0.9;--d:58s;--delay:-4s;--o:.26">
         <g class="mist-body">
-          <path style="--haze:7s" d="M6 8H86" />
+          <path style="--haze:7s;--haze-delay:0s" d="M6 8H86" />
           <path style="--haze:9s;--haze-delay:-2.5s" d="M20 26H104" />
           <path style="--haze:8s;--haze-delay:-5s" d="M10 44H72" />
         </g>
       </g>
-      <g class="mist" style="--y:480px;--s:2.2;--d:92s;--delay:-44s;--o:.24">
+      <g class="mist" style="--y:180px;--s:1.2;--d:72s;--delay:-30s;--o:.22">
         <g class="mist-body">
           <path style="--haze:8.5s;--haze-delay:-1s" d="M6 8H86" />
           <path style="--haze:6.5s;--haze-delay:-3.5s" d="M20 26H104" />
           <path style="--haze:9.5s;--haze-delay:-6s" d="M10 44H72" />
         </g>
       </g>
-      <g class="mist" style="--y:660px;--s:1.1;--d:60s;--delay:-26s;--o:.28">
+      <g class="mist" style="--y:290px;--s:0.7;--d:50s;--delay:-16s;--o:.28">
         <g class="mist-body">
-          <path style="--haze:7.5s" d="M6 8H86" />
+          <path style="--haze:7.5s;--haze-delay:0s" d="M6 8H86" />
           <path style="--haze:9s;--haze-delay:-4s" d="M20 26H104" />
           <path style="--haze:6.8s;--haze-delay:-2s" d="M10 44H72" />
         </g>
       </g>
-
-      <g class="gust" style="--y:30px;--s:1.5;--d:44s;--delay:-6s;--o:.42">
-        <path style="--flow:3.4s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
-        <path class="steel" style="--flow:4.2s;--flow-delay:-1.6s" d="M8 62C52 54 104 52 146 58" />
-        <path style="--flow:3.8s;--flow-delay:-2.4s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      <g class="mist" style="--y:400px;--s:1.1;--d:66s;--delay:-48s;--o:.24">
+        <g class="mist-body">
+          <path style="--haze:6.8s;--haze-delay:-2s" d="M6 8H86" />
+          <path style="--haze:8.2s;--haze-delay:-5s" d="M20 26H104" />
+          <path style="--haze:7.4s;--haze-delay:-1s" d="M10 44H72" />
+        </g>
       </g>
-      <g class="gust" style="--y:225px;--s:1;--d:34s;--delay:-20s;--o:.34">
-        <path class="steel" style="--flow:3s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
-        <path style="--flow:3.9s;--flow-delay:-1.1s" d="M8 62C52 54 104 52 146 58" />
-        <path class="steel" style="--flow:3.3s;--flow-delay:-2s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      <g class="mist" style="--y:510px;--s:0.8;--d:54s;--delay:-9s;--o:.27">
+        <g class="mist-body">
+          <path style="--haze:9.2s;--haze-delay:-3s" d="M6 8H86" />
+          <path style="--haze:7.1s;--haze-delay:-1.5s" d="M20 26H104" />
+          <path style="--haze:8.6s;--haze-delay:-6.5s" d="M10 44H72" />
+        </g>
       </g>
-      <g class="gust" style="--y:420px;--s:1.9;--d:52s;--delay:-33s;--o:.38">
-        <path style="--flow:4.6s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
-        <path class="steel" style="--flow:3.6s;--flow-delay:-2.2s" d="M8 62C52 54 104 52 146 58" />
-        <path style="--flow:4.1s;--flow-delay:-0.8s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      <g class="mist" style="--y:650px;--s:1.3;--d:78s;--delay:-60s;--o:.21">
+        <g class="mist-body">
+          <path style="--haze:7.8s;--haze-delay:-4.5s" d="M6 8H86" />
+          <path style="--haze:9.4s;--haze-delay:-2s" d="M20 26H104" />
+          <path style="--haze:6.6s;--haze-delay:-7s" d="M10 44H72" />
+        </g>
       </g>
-      <g class="gust" style="--y:610px;--s:1.2;--d:38s;--delay:-14s;--o:.36">
-        <path class="steel" style="--flow:3.2s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
-        <path style="--flow:4.4s;--flow-delay:-1.9s" d="M8 62C52 54 104 52 146 58" />
-        <path class="steel" style="--flow:3.7s;--flow-delay:-3s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      <g class="mist" style="--y:760px;--s:0.75;--d:48s;--delay:-22s;--o:.25">
+        <g class="mist-body">
+          <path style="--haze:8.8s;--haze-delay:-1.2s" d="M6 8H86" />
+          <path style="--haze:6.9s;--haze-delay:-4.8s" d="M20 26H104" />
+          <path style="--haze:9.1s;--haze-delay:-3.3s" d="M10 44H72" />
+        </g>
       </g>
-      <g class="gust" style="--y:750px;--s:1.6;--d:48s;--delay:-40s;--o:.3">
-        <path style="--flow:4s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
-        <path class="steel" style="--flow:3.1s;--flow-delay:-1.4s" d="M8 62C52 54 104 52 146 58" />
+      <g class="gust" style="--y:20px;--s:0.9;--d:40s;--delay:-5s;--o:.3">
+        <path style="--flow:3.20s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path class="steel" style="--flow:4.10s;--flow-delay:-1.0s" d="M8 62C52 54 104 52 146 58" />
+        <path style="--flow:3.60s;--flow-delay:-0.0s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:100px;--s:0.6;--d:30s;--delay:-19s;--o:.24">
+        <path class="steel" style="--flow:3.60s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path style="--flow:3.75s;--flow-delay:-1.6s" d="M8 62C52 54 104 52 146 58" />
+        <path class="steel" style="--flow:3.85s;--flow-delay:-0.7s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:165px;--s:1.05;--d:46s;--delay:-33s;--o:.28">
+        <path style="--flow:4.00s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path class="steel" style="--flow:3.40s;--flow-delay:-2.2s" d="M8 62C52 54 104 52 146 58" />
+      </g>
+      <g class="gust" style="--y:235px;--s:0.72;--d:34s;--delay:-11s;--o:.26">
+        <path class="steel" style="--flow:4.40s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path style="--flow:4.10s;--flow-delay:-1.0s" d="M8 62C52 54 104 52 146 58" />
+        <path class="steel" style="--flow:4.35s;--flow-delay:-2.1s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:330px;--s:0.95;--d:42s;--delay:-27s;--o:.3">
+        <path style="--flow:3.20s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path class="steel" style="--flow:3.75s;--flow-delay:-1.6s" d="M8 62C52 54 104 52 146 58" />
+        <path style="--flow:4.60s;--flow-delay:-0.0s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:395px;--s:0.55;--d:28s;--delay:-2s;--o:.22">
+        <path class="steel" style="--flow:3.60s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path style="--flow:3.40s;--flow-delay:-2.2s" d="M8 62C52 54 104 52 146 58" />
+      </g>
+      <g class="gust" style="--y:470px;--s:1.1;--d:50s;--delay:-40s;--o:.27">
+        <path style="--flow:4.00s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path class="steel" style="--flow:4.10s;--flow-delay:-1.0s" d="M8 62C52 54 104 52 146 58" />
+        <path style="--flow:3.85s;--flow-delay:-1.4s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:545px;--s:0.68;--d:32s;--delay:-14s;--o:.25">
+        <path class="steel" style="--flow:4.40s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path style="--flow:3.75s;--flow-delay:-1.6s" d="M8 62C52 54 104 52 146 58" />
+        <path class="steel" style="--flow:4.10s;--flow-delay:-2.1s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:615px;--s:0.88;--d:38s;--delay:-7s;--o:.29">
+        <path style="--flow:3.20s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path class="steel" style="--flow:3.40s;--flow-delay:-2.2s" d="M8 62C52 54 104 52 146 58" />
+      </g>
+      <g class="gust" style="--y:700px;--s:0.6;--d:30s;--delay:-24s;--o:.23">
+        <path class="steel" style="--flow:3.60s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path style="--flow:4.10s;--flow-delay:-1.0s" d="M8 62C52 54 104 52 146 58" />
+        <path class="steel" style="--flow:4.60s;--flow-delay:-0.7s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
+      </g>
+      <g class="gust" style="--y:780px;--s:1;--d:44s;--delay:-36s;--o:.26">
+        <path style="--flow:4.00s" d="M138 18a13 13 0 1 1 9 22C112 42 58 46 10 34" />
+        <path class="steel" style="--flow:3.75s;--flow-delay:-1.6s" d="M8 62C52 54 104 52 146 58" />
+        <path style="--flow:3.60s;--flow-delay:-1.4s" d="M96 92a8 8 0 1 0 6-14C82 76 62 80 46 86" />
       </g>
     </svg>
-  </div>
-
-  <div class="wind-ground" aria-hidden="true">
-    <img class="ground-icon" src="icons/weather/windmill.svg" alt="" style="--x:3%;--w:104px;--o:.3" />
-    <img class="ground-icon" src="icons/weather/wind-spinner.svg" alt="" style="--x:21%;--w:62px;--o:.28" />
-    <img class="ground-icon" src="icons/weather/windsock-moderate.svg" alt="" style="--x:39%;--w:70px;--o:.3" />
-    <img class="ground-icon" src="icons/weather/windmill.svg" alt="" style="--x:60%;--w:80px;--o:.26" />
-    <img class="ground-icon" src="icons/weather/wind-spinner.svg" alt="" style="--x:78%;--w:56px;--o:.28" />
-    <img class="ground-icon" src="icons/weather/windsock-moderate.svg" alt="" style="--x:91%;--w:64px;--o:.28" />
   </div>
 
   <div class="wind-ground" aria-hidden="true">

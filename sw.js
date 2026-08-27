@@ -1,5 +1,5 @@
 /* Clotheshorse service worker — app shell cache-first, API network-first with cache fallback */
-const SHELL_CACHE = "clotheshorse-shell-v12";
+const SHELL_CACHE = "clotheshorse-shell-v13";
 const API_CACHE = "clotheshorse-api-v1";
 
 const WEATHER_ICONS = [
@@ -7,7 +7,6 @@ const WEATHER_ICONS = [
   "overcast", "fog", "drizzle", "rain", "sleet", "snow",
   "partly-cloudy-day-rain", "partly-cloudy-night-rain", "partly-cloudy-day-snow",
   "thunderstorms", "thunderstorms-rain", "thermometer",
-  "windmill", "wind-spinner", "windsock-moderate",
 ].map((n) => `./icons/weather/${n}.svg`);
 
 const SHELL_ASSETS = [
