@@ -6,9 +6,10 @@
   --bg-1: #0d1730;
   --bg-2: #142244;
 
-  /* opaque enough that the wind field stays strictly behind the content */
+  /* one surface tint shared by every panel — cards, search bar, FAQ rows —
+     so nothing reads as more or less solid than the hourly cards */
   --card: rgba(19, 31, 62, 0.82);
-  --card-strong: rgba(24, 38, 74, 0.86);
+  --card-strong: rgba(19, 31, 62, 0.82);
   --card-border: rgba(255, 255, 255, 0.1);
 
   --text: #f2f6ff;
@@ -227,7 +228,6 @@ body::before {
   border: 2px solid var(--card-border);
   border-radius: 999px;
   padding: 0.45rem 0.5rem 0.45rem 1.1rem;
-  backdrop-filter: blur(14px);
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 .search:focus-within {
@@ -270,7 +270,7 @@ body::before {
   top: calc(100% + 0.5rem);
   left: 0; right: 0;
   list-style: none;
-  background: var(--bg-2);
+  background: var(--card);
   border: 2px solid var(--card-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
@@ -381,7 +381,6 @@ body::before {
   background: var(--card);
   border: 1px solid var(--card-border);
   border-radius: var(--radius);
-  backdrop-filter: blur(14px);
 }
 
 /* ============ Hero ============ */
