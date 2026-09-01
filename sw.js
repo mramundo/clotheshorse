@@ -1,5 +1,5 @@
 /* Clotheshorse service worker — app shell cache-first, API network-first with cache fallback */
-const SHELL_CACHE = "clotheshorse-shell-v17";
+const SHELL_CACHE = "clotheshorse-shell-v18";
 const API_CACHE = "clotheshorse-api-v1";
 
 const WEATHER_ICONS = [

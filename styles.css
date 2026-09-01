@@ -613,14 +613,16 @@ body::before {
 .hour-card {
   position: relative;
   scroll-snap-align: start;
-  flex: 0 0 84px;
+  /* grow to fill the row when few hours are left, so the strip always ends
+     flush with the cards above and below; overflow and scroll when many */
+  flex: 1 0 84px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 0.4rem;
   padding: 0.9rem 0.4rem 0.8rem;
   background: var(--card);
-  border: 1px solid var(--card-border);
+  border: 2px solid var(--card-border);
   border-radius: var(--radius-sm);
   overflow: hidden;
   isolation: isolate;
@@ -645,11 +647,7 @@ body::before {
 .hour-card.ok    { --sc: var(--ok); }
 .hour-card.bad   { --sc: var(--bad); }
 
-.hour-card.is-now {
-  border-color: var(--sun);
-  border-width: 2px;
-  box-shadow: 0 0 0 4px rgba(255, 201, 60, 0.12);
-}
+.hour-card.is-now { border-color: var(--sun); }
 .hour-card .h-time {
   font-size: 0.76rem;
   font-weight: 800;

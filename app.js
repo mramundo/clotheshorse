@@ -277,15 +277,21 @@ function render(place, data) {
   els.nowHum.textContent = Math.round(cur.relative_humidity_2m) + "%";
   els.nowWind.textContent = Math.round(cur.wind_speed_10m) + " km/h";
 
-  const nowScore = dryingScore({
-    temp: cur.temperature_2m,
-    humidity: cur.relative_humidity_2m,
-    precipProb: cur.precipitation_probability ?? 0,
-    precip: cur.precipitation ?? 0,
-    wind: cur.wind_speed_10m,
-    radiation: cur.shortwave_radiation ?? 0,
-    isDay: cur.is_day === 1,
-  });
+  // The gauge must agree with the "Now" card in the hourly strip, so it
+  // scores the same hourly record rather than the live `current` block,
+  // whose values differ slightly from the hour's forecast.
+  const nowHour = hours.find((h) => h.date === cityNow.dateKey && h.hour === cityNow.hour);
+  const nowScore = nowHour
+    ? nowHour.score
+    : dryingScore({
+        temp: cur.temperature_2m,
+        humidity: cur.relative_humidity_2m,
+        precipProb: cur.precipitation_probability ?? 0,
+        precip: cur.precipitation ?? 0,
+        wind: cur.wind_speed_10m,
+        radiation: cur.shortwave_radiation ?? 0,
+        isDay: cur.is_day === 1,
+      });
   renderGauge(nowScore);
 
   /* Today hourly (from the city's current hour onward) */
